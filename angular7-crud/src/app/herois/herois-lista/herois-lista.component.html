@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header card-left">
+    Lista de Heróis
+  </div>
+  <div class="card-body">
+    <table class="table table-light" *ngIf="herois$ | async as herois; else loadingError">
+      <thead class="thead-light"> 
+        <tr>
+          <th scope="row">#</th>
+          <th>Nome</th>
+          <th>Poder</th>
+          <th>Rival Vilão</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let heroi of herois">
+        <tr>
+          <td>{{heroi.id}}</td>
+          <td>{{heroi.nome}}</td>
+          <td>{{heroi.poder}}</td>
+          <td>{{heroi.rivalvilao}}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="editar(heroi.id)">
+                Atualizar
+              </button>
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="deletar(heroi)">
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>  
+    </table>
+    <ng-template #loadingError>
+      <div *ngIf="error$ | async; else carregar">
+        <span>Falha ao carregar herois</span>
+      </div>
+      <ng-template #carregar>
+        <div>
+          <span>Carregando...</span>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+  <div class="card-footer">
+    <div class="float-right">
+      <button class="btn btn-primary" [routerLink]="['novo']">
+        Novo
+      </button>
+    </div>
+  </div> 
+</div>
+
+<!-- <ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja remover o herói?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Nao</button>
+  </div>
+</ng-template> -->
+

@@ -1,0 +1,37 @@
+<form [formGroup]="form"  style="padding-top: 15px;">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="nome">Nome</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="nome" 
+            name="nome"
+            formControlName="nome"
+            placeholder="Batman, Homen de ferro...">
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="poder">Poder</label>
+            <input 
+                type="text" 
+                class="form-control"
+                formControlName="poder" 
+                id="poder"
+                name="poder" 
+                placeholder="Fogo, Água, Terra...">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="rivalvilao">Rival vilão</label>
+            <input 
+                type="text" 
+                class="form-control"
+                formControlName="rivalvilao" 
+                id="rivalvilao"
+                name="rivalvilao" 
+                placeholder="Coringa, Thanos, Marilia Mendonça...">
+          </div>
+          <button type="submit" (click)="onSubmit(form)" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
